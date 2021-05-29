@@ -11,14 +11,14 @@ package generics;
  */
 public class MyList {
 
-    private final int[] items = new int[10];
+    private final Object[] items = new Object[10];
     private int count;
 
-    public void add(int item) {
+    public void add(Object item) {
         items[count++] = item;
     }
 
-    public int get(int index) {
+    public Object get(int index) {
         return items[index];
     }
 }

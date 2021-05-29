@@ -15,19 +15,15 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        var list = new MyList();
+
+        var list = new GenericList<Integer>();
         list.add(1);
-//        list.add(Integer.valueOf(1)); // boxing
-        list.add("asd");
-        list.add(new User());
-//        System.out.println(list);
+        int number = list.get(0);
 
-        int number = (int) list.get(0);
-        int number1 = (int) list.get(1); // runtime error ClassCastException
-
-        var userList = new UserList();
+        var userList = new GenericList<User>();
         userList.add(new User());
-//        System.out.println(userList);
+        User user = userList.get(0);
+
     }
 
 }

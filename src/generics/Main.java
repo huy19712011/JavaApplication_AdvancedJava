@@ -16,13 +16,12 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        var list = new GenericList<Integer>();
-        list.add(1);
-        int number = list.get(0);
-
-        var userList = new GenericList<User>();
-        userList.add(new User());
-        User user = userList.get(0);
+        // int => Integer
+        // float => Float
+        // boolean => Boolean
+        GenericList<Integer> numbers = new GenericList<>();
+        numbers.add(2); // boxing Integer.valueOf(2)
+        int number = numbers.get(0); // unboxing
 
     }
 

@@ -5,8 +5,10 @@
         <group>
             <file>file:/D:/Projects/Java/javaCore/JavaApplication_AdvancedJava/src/generics/GenericList.java</file>
             <file>file:/D:/Projects/Java/javaCore/JavaApplication_AdvancedJava/src/generics/UserList.java</file>
+            <file>file:/D:/Projects/Java/javaCore/JavaApplication_AdvancedJava/.gitignore</file>
             <file>file:/D:/Projects/Java/javaCore/JavaApplication_AdvancedJava/src/generics/MyList.java</file>
             <file>file:/D:/Projects/Java/javaCore/JavaApplication_AdvancedJava/src/generics/User.java</file>
+            <file>file:/D:/Projects/Java/javaCore/JavaApplication_AdvancedJava/src/generics/Utils.java</file>
             <file>file:/D:/Projects/Java/javaCore/JavaApplication_AdvancedJava/src/generics/Main.java</file>
         </group>
     </open-files>

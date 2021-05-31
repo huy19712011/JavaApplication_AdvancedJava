@@ -16,10 +16,17 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        Utils.print("first", 10, "test");
+        User user = new Instructor(10);
 
-        var kvp = new KeyValuePair<String, String>("key123", "value123");
-        System.out.println(kvp);
+        Utils.printUser(new User(10));
+        Utils.printUser(new Instructor(10));
+
+        var users = new GenericList<User>();
+        Utils.printUsers(users);
+
+        var users1 = new GenericList<Instructor>();
+        // Utils.printUsers(users1); // error
+
 
     }
 

@@ -30,4 +30,14 @@ public class Utils {
     public static <K, V, T> void print(K key, V value, T test) {
         System.out.println(key + " + " + value + " = " + test);
     }
+
+
+    public static void printUser(User user) {
+        System.out.println(user);
+    }
+
+
+    public static void printUsers(GenericList<User> users) {
+        // do something
+    }
 }

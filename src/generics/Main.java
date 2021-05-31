@@ -32,8 +32,8 @@ public class Main {
         Utils.printUsers(users);
         Utils.printUsers(instructors);
 
-        Utils.printUsers(new GenericList<String>());
-        Utils.printUsers(new GenericList<Integer>());
+//        Utils.printUsers(new GenericList<String>());
+//        Utils.printUsers(new GenericList<Integer>());
 
         Utils.printUsers(new GenericList<User>());
         Utils.printUsers(new GenericList<Instructor>());

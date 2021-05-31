@@ -37,7 +37,34 @@ public class Utils {
     }
 
 
-    public static void printUsers(GenericList<User> users) {
+//    public static void printUsers(GenericList<User> users) {
+//        // do something
+//    }
+
+//    public static void printUsers(GenericList<?> users) {
+//        // do something
+//        Object x = users.get(0);
+//    }
+
+//    public static void printUsers(GenericList<? extends User> users) {
+//        // do something
+//        User x = users.get(0);
+//
+////        Instructor y = users.get(0); // error
+//    }
+
+    public static void printUsers(GenericList<? super User> users) {
         // do something
+//        User x = users.get(0); // error
+        users.add(new User(10));
+        users.add(new Instructor(20));
+
+        Object x = users.get(0);
+//        User y = users.get(0); // error
     }
+
+
+
+
+
 }

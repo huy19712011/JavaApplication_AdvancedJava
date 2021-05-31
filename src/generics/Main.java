@@ -24,8 +24,19 @@ public class Main {
         var users = new GenericList<User>();
         Utils.printUsers(users);
 
+        var instructors = new GenericList<Instructor>();
+
         var users1 = new GenericList<Instructor>();
-        // Utils.printUsers(users1); // error
+        Utils.printUsers(users1);
+
+        Utils.printUsers(users);
+        Utils.printUsers(instructors);
+
+        Utils.printUsers(new GenericList<String>());
+        Utils.printUsers(new GenericList<Integer>());
+
+        Utils.printUsers(new GenericList<User>());
+        Utils.printUsers(new GenericList<Instructor>());
 
 
     }

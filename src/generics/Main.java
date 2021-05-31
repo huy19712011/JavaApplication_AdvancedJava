@@ -16,15 +16,10 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        var max = Utils.max(1, 5);
-        System.out.println(max);
+        Utils.print("first", 10, "test");
 
-        var user1 = new User(10);
-        var user2 = new User(20);
-        System.out.println(user1);
-        System.out.println(user2);
-        var maxUser = Utils.max(user1, user2);
-        System.out.println(maxUser);
+        var kvp = new KeyValuePair<String, String>("key123", "value123");
+        System.out.println(kvp);
 
     }
 

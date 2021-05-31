@@ -21,4 +21,13 @@ public class Utils {
     public static <T extends Comparable<T>> T max(T first, T second) {
         return (first.compareTo(second) < 0) ? second : first;
     }
+
+
+//    public static void print(int key, int value) {
+//        System.out.println(key + " = " + value);
+//    }
+
+    public static <K, V, T> void print(K key, V value, T test) {
+        System.out.println(key + " + " + value + " = " + test);
+    }
 }

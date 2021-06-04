@@ -16,29 +16,17 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        User user = new Instructor(10);
+        var list = new GenericList<String>();
+        list.add("a");
+        list.add("b");
 
-        Utils.printUser(new User(10));
-        Utils.printUser(new Instructor(10));
+//        for (var item: list) // will not work!
+        for (var item: list.items) {
+            System.out.println(item);
+        }
 
-        var users = new GenericList<User>();
-        Utils.printUsers(users);
-
-        var instructors = new GenericList<Instructor>();
-
-        var users1 = new GenericList<Instructor>();
-        Utils.printUsers(users1);
-
-        Utils.printUsers(users);
-        Utils.printUsers(instructors);
-
-//        Utils.printUsers(new GenericList<String>());
-//        Utils.printUsers(new GenericList<Integer>());
-
-        Utils.printUsers(new GenericList<User>());
-        Utils.printUsers(new GenericList<Instructor>());
-
-
+        list.items[0] = "A";
+        int len = list.items.length;
     }
 
 }

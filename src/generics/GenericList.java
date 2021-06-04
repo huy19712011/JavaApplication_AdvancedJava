@@ -5,6 +5,8 @@
  */
 package generics;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author huynq
@@ -12,8 +14,12 @@ package generics;
  */
 public class GenericList<T> {
 
-//    private T[] items = new T[10]; // will not compile
-    private final T[] items = (T[]) new Object[10];
+//    private final T[] items = (T[]) new Object[10];
+
+//    public T[] items = (T[]) new Object[10];
+
+    public ArrayList<T> items = new ArrayList<>();
+
     private int count;
 
     public void add(T item) {

@@ -6,19 +6,18 @@
 package generics;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
  * @author huynq
  * @param <T>
  */
-public class GenericList<T> {
+public class GenericList<T> implements Iterable<T> {
 
-//    private final T[] items = (T[]) new Object[10];
+    private final T[] items = (T[]) new Object[10];
 
-//    public T[] items = (T[]) new Object[10];
-
-    public ArrayList<T> items = new ArrayList<>();
+//    private final ArrayList<T> items = new ArrayList<>();
 
     private int count;
 
@@ -28,6 +27,11 @@ public class GenericList<T> {
 
     public T get(int index) {
         return items[index];
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -21,12 +21,18 @@ public class Main {
         list.add("b");
 
 //        for (var item: list) // will not work!
-        for (var item: list.items) {
+        for (var item: list) {
             System.out.println(item);
         }
 
-        list.items[0] = "A";
-        int len = list.items.length;
+        // [a, b, c]
+        //  ^
+        var iterator = list.iterator();
+        while (iterator.hasNext()) {
+            var current = iterator.next();
+            System.out.println(current);
+        }
+
     }
 
 }

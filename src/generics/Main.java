@@ -20,19 +20,9 @@ public class Main {
         list.add("a");
         list.add("b");
 
-//        for (var item: list) // will not work!
         for (var item: list) {
             System.out.println(item);
         }
-
-        // [a, b, c]
-        //  ^
-        var iterator = list.iterator();
-        while (iterator.hasNext()) {
-            var current = iterator.next();
-            System.out.println(current);
-        }
-
     }
 
 }

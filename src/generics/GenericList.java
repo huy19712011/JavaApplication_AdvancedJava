@@ -5,7 +5,6 @@
  */
 package generics;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -31,7 +30,29 @@ public class GenericList<T> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ListIterator(this);
+    }
+
+
+    private class ListIterator implements Iterator<T> {
+
+        GenericList<T> list;
+        private int index;
+
+        public ListIterator(GenericList<T> list) {
+            this.list = list;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return index < list.count;
+        }
+
+        @Override
+        public T next() {
+            return list.items[index++];
+        }
+
     }
 
 }

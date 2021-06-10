@@ -12,7 +12,12 @@ package LambdaAndFunctionalInterfaces;
 public class LambdaDemo {
 
     public static void show() {
-        greet(new ConsolePrinter());
+        greet(new Printer() {
+            @Override
+            public void print(String message) {
+                System.out.println("Hello World");
+            }
+        });
     }
 
     public static void greet(Printer printer) {

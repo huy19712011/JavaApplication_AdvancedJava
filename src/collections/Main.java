@@ -19,15 +19,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        List<Customer> customers = new ArrayList<>();
-        customers.add(new Customer("b", "email3"));
-        customers.add(new Customer("a", "email2"));
-        customers.add(new Customer("c", "email1"));
-
-        Collections.sort(customers, new EmailComparator());
-
-        System.out.println(customers);
+        QueueDemo.show();
     }
 
 }

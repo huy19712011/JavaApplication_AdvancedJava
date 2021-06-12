@@ -11,9 +11,13 @@ package LambdaAndFunctionalInterfaces;
  */
 public class LambdaDemo {
 
+//    public static String prefix = "-";
+
     public static void show() {
 
-        greet(message -> System.out.println(message));
+        String prefix = "-";
+
+        greet(message -> System.out.println(prefix + message));
 
 //        Printer printer = new ConsolePrinter();
         Printer printer = message -> System.out.println(message);

@@ -11,17 +11,32 @@ package LambdaAndFunctionalInterfaces;
  */
 public class LambdaDemo {
 
-//    public static String prefix = "-";
+//    public static void print(String message) { System.out.println(message);} // match with method in interface
+
+//    public void print(String message) {System.out.println(message);};
+
+    public LambdaDemo(String message) {
+
+    }
 
     public static void show() {
 
-        String prefix = "-";
+//        greet(message -> System.out.println(message));
+//        greet(System.out::println); // method reference
 
-        greet(message -> System.out.println(prefix + message));
+        // Class/object::method
 
-//        Printer printer = new ConsolePrinter();
-        Printer printer = message -> System.out.println(message);
-        greet(printer);
+//        greet(message -> print(message));
+//        greet(LambdaDemo::print);
+
+//        var demo = new LambdaDemo();
+//        greet(message -> demo.print(message));
+//        greet(demo::print);
+
+
+        greet(message -> new LambdaDemo(message));
+        greet(LambdaDemo::new);
+
 
     }
 

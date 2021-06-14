@@ -7,6 +7,8 @@ package LambdaAndFunctionalInterfaces;
 
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.DoubleSupplier;
+import java.util.function.Supplier;
 
 /**
  *
@@ -16,15 +18,19 @@ public class LambdaDemo {
 
     public static void show() {
 
-        List<String> list = List.of("a", "b", "c");
+//        Supplier<Double> getRandom = () -> {return Math.random();};
 
-        Consumer<String> print = item -> System.out.println(item);
-        Consumer<String> printUpperCase = item -> System.out.println(item.toUpperCase());
+//        Supplier<Double> getRandom = () -> Math.random();
 
-//        list.forEach(print.andThen(printUpperCase));
+        Supplier<Double> getRandom = Math::random;
 
-        //
-        list.forEach(print.andThen(printUpperCase).andThen(print));
+        // calling
+        var random = getRandom.get();
+        System.out.println(random);
+
+        // with primitive types: DoubleSupplier, IntSupplier, BooleanSupplier, ...
+        DoubleSupplier g = Math::random;
+        System.out.println(g.getAsDouble());
 
     }
 

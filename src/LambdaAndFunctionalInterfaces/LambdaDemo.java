@@ -14,45 +14,18 @@ import java.util.function.Consumer;
  */
 public class LambdaDemo {
 
-//    public static void print(String message) { System.out.println(message);} // match with method in interface
-
-//    public void print(String message) {System.out.println(message);};
-
-    public LambdaDemo(String message) {
-
-    }
-
     public static void show() {
 
-        List<Integer> list = List.of(1, 2, 3);
+        List<String> list = List.of("a", "b", "c");
 
-/*
-    // Imperative Programming (for, if/else, switch/case)
-*/
+        Consumer<String> print = item -> System.out.println(item);
+        Consumer<String> printUpperCase = item -> System.out.println(item.toUpperCase());
 
-//        for (var item: list) {
-//            System.out.println(item);
-//        }
+//        list.forEach(print.andThen(printUpperCase));
 
-/*
-    // Declarative Programming
-*/
+        //
+        list.forEach(print.andThen(printUpperCase).andThen(print));
 
-//        list.forEach((Integer item) -> {System.out.println(item);});
-
-//        list.forEach(item -> {System.out.println(item);});
-
-//        list.forEach(new Consumer<Integer>() {
-
-//            @Override
-//            public void accept(Integer item) {
-//                System.out.println(item);
-//            }
-//        });
-
-//        list.forEach(item -> System.out.println(item));
-
-        list.forEach(System.out::println);
     }
 
 }

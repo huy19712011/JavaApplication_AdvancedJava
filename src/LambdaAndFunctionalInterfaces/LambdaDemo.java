@@ -13,6 +13,7 @@ import java.util.function.Function;
 import java.util.function.IntBinaryOperator;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 /**
  *
@@ -22,20 +23,12 @@ public class LambdaDemo {
 
     public static void show() {
 
-        BinaryOperator<Integer> add = (a, b) -> a + b;
-        var result = add.apply(1, 2);
+        UnaryOperator<Integer> square = n -> n * n;
+        UnaryOperator<Integer> increment = n -> n + 1;
+
+        var result = increment.andThen(square).apply(1);
         System.out.println(result);
 
-        // if many use
-        IntBinaryOperator add2 = (a, b) -> a + b;
-        result = add2.applyAsInt(3, 4);
-        System.out.println(result);
-
-        // a,b -> a+b -> square
-        // combining
-        Function<Integer, Integer> square = a -> a * a;
-        result = add.andThen(square).apply(1, 2);
-        System.out.println(result);
     }
 
 }

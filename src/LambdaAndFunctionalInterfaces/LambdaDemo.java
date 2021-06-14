@@ -6,9 +6,11 @@
 package LambdaAndFunctionalInterfaces;
 
 import java.util.List;
+import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.DoubleSupplier;
 import java.util.function.Function;
+import java.util.function.IntBinaryOperator;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
@@ -20,15 +22,20 @@ public class LambdaDemo {
 
     public static void show() {
 
-        Predicate<String> hasLeftBrace = str -> str.startsWith("{");
-        Predicate<String> hasRightBrace = str -> str.endsWith("}");
-
-        // and(), or(), negate() => &&, ||, !
-        Predicate<String> hasLeftAndRightBraces = hasLeftBrace.and(hasRightBrace);
-        var result = hasLeftAndRightBraces.test("{key:value}");
+        BinaryOperator<Integer> add = (a, b) -> a + b;
+        var result = add.apply(1, 2);
         System.out.println(result);
 
+        // if many use
+        IntBinaryOperator add2 = (a, b) -> a + b;
+        result = add2.applyAsInt(3, 4);
+        System.out.println(result);
 
+        // a,b -> a+b -> square
+        // combining
+        Function<Integer, Integer> square = a -> a * a;
+        result = add.andThen(square).apply(1, 2);
+        System.out.println(result);
     }
 
 }

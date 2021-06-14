@@ -5,6 +5,9 @@
  */
 package LambdaAndFunctionalInterfaces;
 
+import java.util.List;
+import java.util.function.Consumer;
+
 /**
  *
  * @author huynq
@@ -21,26 +24,35 @@ public class LambdaDemo {
 
     public static void show() {
 
-//        greet(message -> System.out.println(message));
-//        greet(System.out::println); // method reference
+        List<Integer> list = List.of(1, 2, 3);
 
-        // Class/object::method
+/*
+    // Imperative Programming (for, if/else, switch/case)
+*/
 
-//        greet(message -> print(message));
-//        greet(LambdaDemo::print);
+//        for (var item: list) {
+//            System.out.println(item);
+//        }
 
-//        var demo = new LambdaDemo();
-//        greet(message -> demo.print(message));
-//        greet(demo::print);
+/*
+    // Declarative Programming
+*/
 
+//        list.forEach((Integer item) -> {System.out.println(item);});
 
-        greet(message -> new LambdaDemo(message));
-        greet(LambdaDemo::new);
+//        list.forEach(item -> {System.out.println(item);});
 
+//        list.forEach(new Consumer<Integer>() {
 
+//            @Override
+//            public void accept(Integer item) {
+//                System.out.println(item);
+//            }
+//        });
+
+//        list.forEach(item -> System.out.println(item));
+
+        list.forEach(System.out::println);
     }
 
-    public static void greet(Printer printer) {
-        printer.print("Hello World");
-    }
 }

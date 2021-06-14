@@ -8,6 +8,7 @@ package LambdaAndFunctionalInterfaces;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.DoubleSupplier;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
@@ -18,19 +19,17 @@ public class LambdaDemo {
 
     public static void show() {
 
-//        Supplier<Double> getRandom = () -> {return Math.random();};
+        Function<String, Integer> map = str -> str.length();
 
-//        Supplier<Double> getRandom = () -> Math.random();
+        var length = map.apply("For Testing");
+        System.out.println(length);
 
-        Supplier<Double> getRandom = Math::random;
+        // types: apply(T t)
+//        BiFunction<Thread, UnknownError, R>
+//        IntFunction<R>
+//        IntToLongFunction
+//        ToIntFunction<T>
 
-        // calling
-        var random = getRandom.get();
-        System.out.println(random);
-
-        // with primitive types: DoubleSupplier, IntSupplier, BooleanSupplier, ...
-        DoubleSupplier g = Math::random;
-        System.out.println(g.getAsDouble());
 
     }
 

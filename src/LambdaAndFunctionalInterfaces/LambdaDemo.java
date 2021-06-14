@@ -19,17 +19,27 @@ public class LambdaDemo {
 
     public static void show() {
 
-        Function<String, Integer> map = str -> str.length();
+        // "key:value"
+        // 1 "key=value"
+        // 2 "{key=value}"
+        Function<String, String> replaceColon = str -> str.replace(":", "=");
+        Function<String, String> addBraces = str -> "{" + str + "}";
 
-        var length = map.apply("For Testing");
-        System.out.println(length);
+        // 2 ways to combine functions
+        // 1st way
+        // 1a
+        var combinedFun = replaceColon.andThen(addBraces);
+        var result = combinedFun.apply("key:value");
+        System.out.println(result);
 
-        // types: apply(T t)
-//        BiFunction<Thread, UnknownError, R>
-//        IntFunction<R>
-//        IntToLongFunction
-//        ToIntFunction<T>
+        //1b
+        result = replaceColon.andThen(addBraces).apply("key:value");
+        System.out.println(result);
 
+
+        // 2nd way
+        result = addBraces.compose(replaceColon).apply("key:value");
+        System.out.println(result);
 
     }
 

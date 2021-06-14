@@ -20,11 +20,14 @@ public class LambdaDemo {
 
     public static void show() {
 
-        // "test" -> have 5 or more characters
-        Predicate<String> isLongerThan5 = str -> str.length() > 5;
+        Predicate<String> hasLeftBrace = str -> str.startsWith("{");
+        Predicate<String> hasRightBrace = str -> str.endsWith("}");
 
-        var result = isLongerThan5.test("test");
+        // and(), or(), negate() => &&, ||, !
+        Predicate<String> hasLeftAndRightBraces = hasLeftBrace.and(hasRightBrace);
+        var result = hasLeftAndRightBraces.test("{key:value}");
         System.out.println(result);
+
 
     }
 

@@ -5,8 +5,12 @@
  */
 package Streams;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 /**
  *
@@ -16,32 +20,42 @@ public class StreamDemo {
 
     public static void show() {
 
-        List<Movie> movies = List.of(
-                new Movie("a", 10),
-                new Movie("b", 20),
-                new Movie("c", 30)
-        );
+        // from collections
+        Collection<Integer> list = new ArrayList<>();
+        list.stream();
 
-        // find movies having likes > 10
-/*
-    // Imperative programming
-*/
-        int count = 0;
-        for (var movie: movies) {
-            if (movie.getLikes() > 10) {
-                count++;
-            }
-        }
-        System.out.println(count);
+        // from arrays
+        int[] numbers = {1, 2, 3};
+        //numbers.stream() // do not have
+        Arrays.stream(numbers)
+                .forEach(System.out::println);
 
-/*
-    // Declarative programming
-*/
+        // from a arbitrany number of objects
+        // Stream.of(1, 2, 3, 4, "a").forEach(System.out::println);
+        Stream.of(1, 2, 3, 4, "asd").forEach(obj -> System.out.println(obj));
 
-        var count2 = movies.stream()
-                .filter(movie -> movie.getLikes() > 10)
-                .count();
-        System.out.println(count2);
+        // infinite
+        var stream = Stream.generate(() -> Math.random());
+        // stream.forEach(System.out::println);
+
+        // finite
+        stream.limit(3)
+                .forEach(System.out::println);
+
+        //
+        Stream.iterate(1, n -> n + 1)
+                .limit(5)
+                .forEach(System.out::println);
+
+        //
+        Stream.iterate("a", c -> {
+            var cc = (char) (c.charAt(0) + 1);
+            return String.valueOf(cc);
+        })
+                .limit(5)
+                .forEach(System.out::println);
+
+
     }
 
 }

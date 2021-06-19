@@ -9,7 +9,7 @@ package Streams;
  *
  * @author huynq
  */
-public class Movie {
+public class Movie implements Comparable<Movie>{
 
     private String title;
     private int likes;
@@ -27,8 +27,10 @@ public class Movie {
         return title;
     }
 
-    
-
+    @Override
+    public int compareTo(Movie o) {
+        return this.getTitle().compareTo(o.getTitle());
+    }
 
 
 }

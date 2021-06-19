@@ -8,6 +8,7 @@ package Streams;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -21,46 +22,48 @@ public class StreamDemo {
     public static void show() {
 
         var movies = List.of(
-                new Movie("a", 10),
-                new Movie("b", 20),
+                new Movie("b", 10),
+                new Movie("a", 20),
                 new Movie("c", 30)
         );
 
-        // limit()
+        // way 1
+        // using sorted() and Movie implements Comparable
         movies.stream()
-                .limit(2)
-                .forEach(m -> System.out.println(m.getTitle()));
+                .sorted()
+                .forEach(movie -> System.out.println(movie.getTitle()));
 
-        // skip()
+        // way 2
+        // using sorted(comparator) and Movie implements Comparator
         movies.stream()
-                .skip(2)
-                .forEach(m -> System.out.println(m.getTitle()));
+                .sorted((a, b) -> a.getTitle().compareTo(b.getTitle()))
+                //.sorted(Comparator.comparing(m -> m.getTitle()))
+                .forEach(movie -> System.out.println(movie.getTitle()));
 
-        // using limit() and skip() to pagination
-        // 1000 movies
-        // 10 movies per page (pageSize)
-        // show 3rd page
-        // skip(20) = skip((page-1) * pageSize)
-        // limit(10) = limit(pageSize)
+        // more ...
         movies.stream()
-                .skip(20)
-                .limit(10)
-                .forEach(m -> System.out.println(m.getTitle()));
+                .sorted(Comparator.comparing(m -> m.getTitle()))
+                .forEach(movie -> System.out.println(movie.getTitle()));
 
-        // takeWhile()
+        // more ... using method reference
         movies.stream()
-                .takeWhile(m -> m.getLikes() < 30)
-                .forEach(m -> System.out.println(m.getTitle()));
+                .sorted(Comparator.comparing(Movie::getTitle))
+                .forEach(movie -> System.out.println(movie.getTitle()));
 
-        // takeWhile vs filter
-        // filter: loop over all elements
-        // takeWhile: loop until condition
-        // example a=10, b=30, c=20 -> print only a
-
-        //dropWhile() <> takeWhile()
+        // DESC using reversed()
         movies.stream()
-                .dropWhile(m -> m.getLikes() < 30)
-                .forEach(m -> System.out.println(m.getTitle()));
+                .sorted(Comparator.comparing(Movie::getTitle).reversed())
+                .forEach(movie -> System.out.println(movie.getTitle()));
+
+
     }
 
 }
+
+
+
+
+
+
+
+

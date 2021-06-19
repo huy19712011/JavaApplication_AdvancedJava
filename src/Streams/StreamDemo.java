@@ -22,22 +22,26 @@ public class StreamDemo {
     public static void show() {
 
         var movies = List.of(
-                new Movie("b", 10),
-                new Movie("b2", 10),
-                new Movie("a", 20),
+                new Movie("a", 10),
+                new Movie("b", 20),
                 new Movie("c", 30)
         );
 
-        // list all values
+        //
         movies.stream()
-                .map(Movie::getLikes)
+                .filter(m -> m.getLikes() > 10)
+                .map(Movie::getTitle)
                 .forEach(System.out::println);
 
-        // distinct()
+        // using peek() to get output of each operation
         movies.stream()
-                .map(Movie::getLikes)
-                .distinct()
+                .filter(m -> m.getLikes() > 10)
+                .peek(m -> System.out.println("filtered: " + m.getTitle()))
+                .map(Movie::getTitle)
+                .peek(t -> System.out.println("mapped: " + t))
                 .forEach(System.out::println);
+
+
     }
 
 }

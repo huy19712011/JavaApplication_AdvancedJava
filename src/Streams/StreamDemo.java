@@ -25,23 +25,42 @@ public class StreamDemo {
                 new Movie("b", 20),
                 new Movie("c", 30)
         );
-        //System.out.println(movies);
 
-        // Intermediate: map(), filter()
-        var filtered = movies.stream()
-                .filter(m -> m.getLikes() > 10);
+        // limit()
+        movies.stream()
+                .limit(2)
+                .forEach(m -> System.out.println(m.getTitle()));
 
-        // Terminal: forEach()
-        filtered.forEach(m -> System.out.println(m.getLikes()));
+        // skip()
+        movies.stream()
+                .skip(2)
+                .forEach(m -> System.out.println(m.getTitle()));
 
-        //
-        Predicate<Movie> isPopular = m -> m.getLikes() > 20;
-        filtered = movies.stream().filter(isPopular);
-        filtered.forEach(m -> System.out.println(m.getTitle()));
+        // using limit() and skip() to pagination
+        // 1000 movies
+        // 10 movies per page (pageSize)
+        // show 3rd page
+        // skip(20) = skip((page-1) * pageSize)
+        // limit(10) = limit(pageSize)
+        movies.stream()
+                .skip(20)
+                .limit(10)
+                .forEach(m -> System.out.println(m.getTitle()));
 
-        // source data is not affected
-        System.out.println(movies);
+        // takeWhile()
+        movies.stream()
+                .takeWhile(m -> m.getLikes() < 30)
+                .forEach(m -> System.out.println(m.getTitle()));
 
+        // takeWhile vs filter
+        // filter: loop over all elements
+        // takeWhile: loop until condition
+        // example a=10, b=30, c=20 -> print only a
+
+        //dropWhile() <> takeWhile()
+        movies.stream()
+                .dropWhile(m -> m.getLikes() < 30)
+                .forEach(m -> System.out.println(m.getTitle()));
     }
 
 }

@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -27,50 +28,22 @@ public class StreamDemo {
                 new Movie("c", 30)
         );
 
-        //
-        var count = movies.stream()
-                .count();
-        System.out.println(count);
+        // way 1: using Optional<T>
+        // after map: [10 20 30]
+        //            [30, 30]
+        //            [60]
+        Optional<Integer> sum = movies.stream()
+                .map(m -> m.getLikes())
+                //.reduce((a, b) -> a + b);
+                //.reduce((a, b) -> Integer.sum(a, b));
+                .reduce(Integer::sum);
+        System.out.println(sum.orElse(0));
 
-        //anyMatch
-//        boolean result = movies.stream()
-//                .anyMatch(m -> m.getLikes() > 20);
-//        System.out.println(result);
-
-        //allMatch
-//        boolean result = movies.stream()
-//                .allMatch(m -> m.getLikes() > 20);
-//        System.out.println(result);
-
-        //noneMatch
-//        boolean result = movies.stream()
-//                .noneMatch(m -> m.getLikes() > 20);
-//        System.out.println(result);
-
-        //findFirst
-//        var result = movies.stream()
-//                .findFirst()
-//                .get();
-//        System.out.println(result.getTitle());
-
-        //findAny
-//        var result = movies.stream()
-//                .findAny()
-//                .get();
-//        System.out.println(result.getTitle());
-
-        //max
-//        var result = movies.stream()
-//                .max(Comparator.comparing(Movie::getLikes))
-//                .get();
-//        System.out.println(result.getTitle());
-
-        //min
-        var result = movies.stream()
-                .min(Comparator.comparing(Movie::getLikes))
-                .get();
-        System.out.println(result.getTitle());
-
+        // way 2: not use Optional<T>
+        Integer sum2 = movies.stream()
+                .map(m -> m.getLikes())
+                .reduce(0, Integer::sum);
+        System.out.println(sum2);
 
     }
 

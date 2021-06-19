@@ -28,18 +28,48 @@ public class StreamDemo {
         );
 
         //
-        movies.stream()
-                .filter(m -> m.getLikes() > 10)
-                .map(Movie::getTitle)
-                .forEach(System.out::println);
+        var count = movies.stream()
+                .count();
+        System.out.println(count);
 
-        // using peek() to get output of each operation
-        movies.stream()
-                .filter(m -> m.getLikes() > 10)
-                .peek(m -> System.out.println("filtered: " + m.getTitle()))
-                .map(Movie::getTitle)
-                .peek(t -> System.out.println("mapped: " + t))
-                .forEach(System.out::println);
+        //anyMatch
+//        boolean result = movies.stream()
+//                .anyMatch(m -> m.getLikes() > 20);
+//        System.out.println(result);
+
+        //allMatch
+//        boolean result = movies.stream()
+//                .allMatch(m -> m.getLikes() > 20);
+//        System.out.println(result);
+
+        //noneMatch
+//        boolean result = movies.stream()
+//                .noneMatch(m -> m.getLikes() > 20);
+//        System.out.println(result);
+
+        //findFirst
+//        var result = movies.stream()
+//                .findFirst()
+//                .get();
+//        System.out.println(result.getTitle());
+
+        //findAny
+//        var result = movies.stream()
+//                .findAny()
+//                .get();
+//        System.out.println(result.getTitle());
+
+        //max
+//        var result = movies.stream()
+//                .max(Comparator.comparing(Movie::getLikes))
+//                .get();
+//        System.out.println(result.getTitle());
+
+        //min
+        var result = movies.stream()
+                .min(Comparator.comparing(Movie::getLikes))
+                .get();
+        System.out.println(result.getTitle());
 
 
     }

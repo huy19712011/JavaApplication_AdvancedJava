@@ -25,39 +25,22 @@ public class StreamDemo {
                 new Movie("b", 20),
                 new Movie("c", 30)
         );
+        //System.out.println(movies);
 
-        movies.forEach(movie -> {
-            System.out.println(movie.getTitle());
-        });
+        // Intermediate: map(), filter()
+        var filtered = movies.stream()
+                .filter(m -> m.getLikes() > 10);
 
-        // map()
-        movies.stream()
-                .map(movie -> movie.getTitle())
-                .forEach(name -> System.out.println(name));
-                //.forEach(System.out::println);
+        // Terminal: forEach()
+        filtered.forEach(m -> System.out.println(m.getLikes()));
 
-        // mapToInt()
-        movies.stream()
-                .mapToInt(movie -> movie.getLikes())
-                //.map(movie -> movie.getTitle())
-                .forEach(name -> System.out.println(name));
+        //
+        Predicate<Movie> isPopular = m -> m.getLikes() > 20;
+        filtered = movies.stream().filter(isPopular);
+        filtered.forEach(m -> System.out.println(m.getTitle()));
 
-
-        // using flat map
-        // Stream<List<x>> -> Stream<x>
-        // Stream<Set<x>> -> Stream<x>
-        // Stream<ArrayList<x>> -> Stream<x>
-
-//        var stream = Stream.of(List.of(1, 2, 3), List.of(4, 5, 6));
-//        stream.forEach(list -> System.out.println(list)); // print [1 2 3] [4 5 6]
-
-        var stream = Stream.of(List.of(1, 2, 3), Arrays.asList(4, 5, 6));
-        stream
-                .flatMap(list -> list.stream())
-                .forEach(list -> System.out.println(list)); // print 1 2 3 4 5 6
-
-
-
+        // source data is not affected
+        System.out.println(movies);
 
     }
 

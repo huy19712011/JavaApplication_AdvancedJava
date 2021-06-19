@@ -20,40 +20,43 @@ public class StreamDemo {
 
     public static void show() {
 
-        // from collections
-        Collection<Integer> list = new ArrayList<>();
-        list.stream();
+        var movies = List.of(
+                new Movie("a", 10),
+                new Movie("b", 20),
+                new Movie("c", 30)
+        );
 
-        // from arrays
-        int[] numbers = {1, 2, 3};
-        //numbers.stream() // do not have
-        Arrays.stream(numbers)
-                .forEach(System.out::println);
+        movies.forEach(movie -> {
+            System.out.println(movie.getTitle());
+        });
 
-        // from a arbitrany number of objects
-        // Stream.of(1, 2, 3, 4, "a").forEach(System.out::println);
-        Stream.of(1, 2, 3, 4, "asd").forEach(obj -> System.out.println(obj));
+        // map()
+        movies.stream()
+                .map(movie -> movie.getTitle())
+                .forEach(name -> System.out.println(name));
+                //.forEach(System.out::println);
 
-        // infinite
-        var stream = Stream.generate(() -> Math.random());
-        // stream.forEach(System.out::println);
+        // mapToInt()
+        movies.stream()
+                .mapToInt(movie -> movie.getLikes())
+                //.map(movie -> movie.getTitle())
+                .forEach(name -> System.out.println(name));
 
-        // finite
-        stream.limit(3)
-                .forEach(System.out::println);
 
-        //
-        Stream.iterate(1, n -> n + 1)
-                .limit(5)
-                .forEach(System.out::println);
+        // using flat map
+        // Stream<List<x>> -> Stream<x>
+        // Stream<Set<x>> -> Stream<x>
+        // Stream<ArrayList<x>> -> Stream<x>
 
-        //
-        Stream.iterate("a", c -> {
-            var cc = (char) (c.charAt(0) + 1);
-            return String.valueOf(cc);
-        })
-                .limit(5)
-                .forEach(System.out::println);
+//        var stream = Stream.of(List.of(1, 2, 3), List.of(4, 5, 6));
+//        stream.forEach(list -> System.out.println(list)); // print [1 2 3] [4 5 6]
+
+        var stream = Stream.of(List.of(1, 2, 3), Arrays.asList(4, 5, 6));
+        stream
+                .flatMap(list -> list.stream())
+                .forEach(list -> System.out.println(list)); // print 1 2 3 4 5 6
+
+
 
 
     }

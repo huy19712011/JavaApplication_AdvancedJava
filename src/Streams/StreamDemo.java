@@ -10,8 +10,12 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -28,22 +32,52 @@ public class StreamDemo {
                 new Movie("c", 30)
         );
 
-        // way 1: using Optional<T>
-        // after map: [10 20 30]
-        //            [30, 30]
-        //            [60]
-        Optional<Integer> sum = movies.stream()
-                .map(m -> m.getLikes())
-                //.reduce((a, b) -> a + b);
-                //.reduce((a, b) -> Integer.sum(a, b));
-                .reduce(Integer::sum);
-        System.out.println(sum.orElse(0));
 
-        // way 2: not use Optional<T>
-        Integer sum2 = movies.stream()
-                .map(m -> m.getLikes())
-                .reduce(0, Integer::sum);
-        System.out.println(sum2);
+
+        //
+        List<Movie> list = movies.stream()
+                .filter(m -> m.getLikes() > 10)
+                .collect(Collectors.toList());
+
+        //
+        Set<Movie> set = movies.stream()
+                .filter(m -> m.getLikes() > 10)
+                .collect(Collectors.toSet());
+
+        // map
+        // key (title)
+        // value (likes)
+        Map<String, Integer> map = movies.stream()
+                .filter(m -> m.getLikes() > 10)
+                .collect(Collectors.toMap(m -> m.getTitle(), m -> m.getLikes()));
+        System.out.println(map);
+
+        // using method reference
+        Map<String, Movie> map2 = movies.stream()
+                .filter(m -> m.getLikes() > 10)
+                .collect(Collectors.toMap(Movie::getTitle, Function.identity()));
+        System.out.println(map2);
+
+
+        //summingInt
+        var result = movies.stream()
+                .filter(m -> m.getLikes() > 10)
+                .collect(Collectors.summingInt(Movie::getLikes));
+        System.out.println(result);
+
+        //summarizingInt
+        var result2 = movies.stream()
+                .filter(m -> m.getLikes() > 10)
+                .collect(Collectors.summarizingInt(Movie::getLikes));
+        System.out.println(result2);
+
+        //
+        var result3 = movies.stream()
+                .filter(m -> m.getLikes() > 10)
+                .map(Movie::getTitle)
+                .collect(Collectors.joining(", "));
+        System.out.println(result3);
+
 
     }
 

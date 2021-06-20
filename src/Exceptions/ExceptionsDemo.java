@@ -25,8 +25,11 @@ public class ExceptionsDemo {
         var account = new Account(); // balance = 0;
         try {
             account.withdraw(10);
-        } catch (InsufficientFundsException ex) {
-            System.out.println(ex.getMessage());
+        } catch (AccountException ex) {
+
+            //ex.printStackTrace(System.err);
+            var cause = ex.getCause();
+            System.out.println(cause);
         }
 
     }

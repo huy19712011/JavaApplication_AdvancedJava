@@ -21,10 +21,19 @@ public class Account {
             throw new IOException();
     }
 
-    public void withdraw(float value) throws InsufficientFundsException {
+    public void withdraw(float value) throws AccountException {
 
-        if (value > balance)
-            throw new InsufficientFundsException();
+        if (value > balance) {
+
+            //var fundsException = new InsufficientFundsException();
+
+            var accountException = new AccountException(new InsufficientFundsException());
+
+            //accountException.initCause(fundsException);
+
+            throw accountException;
+
+        }
 
     }
 

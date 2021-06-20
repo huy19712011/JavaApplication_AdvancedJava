@@ -7,6 +7,11 @@ package Exceptions;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,14 +23,24 @@ public class ExceptionsDemo {
 
         try {
             var reader = new FileReader("file.txt");
-            System.out.println("File opened");
+
+            var value = reader.read();
+
+            new SimpleDateFormat().parse("");
 
         } catch (FileNotFoundException ex) {
             System.out.println("File does not exist");
             System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println("Could not read data.");
+        } catch (ParseException ex) {
+            Logger.getLogger(ExceptionsDemo.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        //System.out.println("File opened");
+        // change orders of FileNotFoundException and IOException
+        // -> not need FileNotFoundException
+
+        // We can combine IOException | ParseException
 
     }
 

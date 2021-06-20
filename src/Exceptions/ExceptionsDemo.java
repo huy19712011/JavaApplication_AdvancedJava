@@ -20,17 +20,14 @@ import java.util.logging.Logger;
  */
 public class ExceptionsDemo {
 
-    public static void show() throws IOException {
+    public static void show() {
 
-        var account = new Account();
+        var account = new Account(); // balance = 0;
         try {
-            account.deposit(-1);
-        } catch (IOException ex) {
-            System.out.println("Logging");
-
-            throw ex;
+            account.withdraw(10);
+        } catch (InsufficientFundsException ex) {
+            System.out.println(ex.getMessage());
         }
-
 
     }
 

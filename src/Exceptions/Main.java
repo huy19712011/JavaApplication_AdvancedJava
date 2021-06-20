@@ -20,11 +20,7 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        try {
-            ExceptionsDemo.show();
-        } catch (IOException ex) {
-            System.out.println("an unexpected error occurred.");
-        }
+        ExceptionsDemo.show();
     }
 
 }

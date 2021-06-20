@@ -7,6 +7,7 @@ package Exceptions;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,23 +22,16 @@ public class ExceptionsDemo {
 
     public static void show() {
 
-        FileReader reader = null;
-        try {
-            reader = new FileReader("file.txt");
+        try (
+            var reader = new FileReader("file.txt");
+            var writer = new FileWriter("");
+
+        ) {
 
             var value = reader.read();
 
         } catch (IOException ex) {
             System.out.println("Could not read data.");
-        } finally {
-            // file handler
-            // database connection
-            if (reader != null)
-                try {
-                reader.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(ExceptionsDemo.class.getName()).log(Level.SEVERE, null, ex);
-                }
         }
 
 

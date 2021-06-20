@@ -34,27 +34,18 @@ public class StreamDemo {
 
 
         //
-        Map<Genre, List<Movie>> result = movies.stream()
-                .collect(Collectors.groupingBy(Movie::getGenre));
+        Map<Boolean, List<Movie>> result = movies.stream()
+                .collect(Collectors.partitioningBy(m -> m.getLikes() > 20));
         System.out.println(result);
 
-        //
-        Map<Genre, Set<Movie>> result2 = movies.stream()
-                .collect(Collectors.groupingBy(Movie::getGenre, Collectors.toSet()));
-        System.out.println(result2);
 
         //
-        Map<Genre, Long> result3 = movies.stream()
-                .collect(Collectors.groupingBy(Movie::getGenre, Collectors.counting()));
-        System.out.println(result3);
-
-        //
-        Map<Genre, String> result4 = movies.stream()
-                .collect(Collectors.groupingBy(
-                        Movie::getGenre,
-                        Collectors.mapping(Movie::getTitle, Collectors.joining(", ")))
+        Map<Boolean, String> result2 = movies.stream()
+                .collect(Collectors.partitioningBy(m -> m.getLikes() > 20,
+                                                   Collectors.mapping(Movie::getTitle,
+                                                                      Collectors.joining(", ")))
                 );
-        System.out.println(result4);
+        System.out.println(result2);
 
 
     }

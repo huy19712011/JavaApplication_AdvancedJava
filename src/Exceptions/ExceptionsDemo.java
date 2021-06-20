@@ -22,17 +22,8 @@ public class ExceptionsDemo {
 
     public static void show() {
 
-        try (
-            var reader = new FileReader("file.txt");
-            var writer = new FileWriter("");
-
-        ) {
-
-            var value = reader.read();
-
-        } catch (IOException ex) {
-            System.out.println("Could not read data.");
-        }
+        var account = new Account();
+        account.deposit(-1);
 
 
     }

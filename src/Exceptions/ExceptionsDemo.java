@@ -21,26 +21,25 @@ public class ExceptionsDemo {
 
     public static void show() {
 
+        FileReader reader = null;
         try {
-            var reader = new FileReader("file.txt");
+            reader = new FileReader("file.txt");
 
             var value = reader.read();
 
-            new SimpleDateFormat().parse("");
-
-        } catch (FileNotFoundException ex) {
-            System.out.println("File does not exist");
-            System.out.println(ex.getMessage());
         } catch (IOException ex) {
             System.out.println("Could not read data.");
-        } catch (ParseException ex) {
-            Logger.getLogger(ExceptionsDemo.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // file handler
+            // database connection
+            if (reader != null)
+                try {
+                reader.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(ExceptionsDemo.class.getName()).log(Level.SEVERE, null, ex);
+                }
         }
 
-        // change orders of FileNotFoundException and IOException
-        // -> not need FileNotFoundException
-
-        // We can combine IOException | ParseException
 
     }
 

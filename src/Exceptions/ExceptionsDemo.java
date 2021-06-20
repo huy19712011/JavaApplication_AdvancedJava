@@ -20,10 +20,16 @@ import java.util.logging.Logger;
  */
 public class ExceptionsDemo {
 
-    public static void show() {
+    public static void show() throws IOException {
 
         var account = new Account();
-        account.deposit(-1);
+        try {
+            account.deposit(-1);
+        } catch (IOException ex) {
+            System.out.println("Logging");
+
+            throw ex;
+        }
 
 
     }

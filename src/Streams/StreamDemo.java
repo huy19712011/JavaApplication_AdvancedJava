@@ -16,6 +16,7 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -26,28 +27,22 @@ public class StreamDemo {
 
     public static void show() {
 
-        var movies = List.of(
-                new Movie("a", 10, Genre.THRILLER),
-                new Movie("b", 20, Genre.ACTION),
-                new Movie("c", 30, Genre.ACTION)
-        );
+/*
+    // when working with primitive types:
+       use IntStream, LongStream, DoubleStream, => more efficient than Stream
+*/
 
 
         //
-        Map<Boolean, List<Movie>> result = movies.stream()
-                .collect(Collectors.partitioningBy(m -> m.getLikes() > 20));
-        System.out.println(result);
+        IntStream.of(1, 2, 3);
 
+        // print 1 .. 5
+        IntStream.rangeClosed(1, 5)
+                .forEach(System.out::println);
 
-        //
-        Map<Boolean, String> result2 = movies.stream()
-                .collect(Collectors.partitioningBy(m -> m.getLikes() > 20,
-                                                   Collectors.mapping(Movie::getTitle,
-                                                                      Collectors.joining(", ")))
-                );
-        System.out.println(result2);
-
-
+        // print 1 .. 4
+        IntStream.range(1, 5)
+                .forEach(System.out::println);
     }
 
 }

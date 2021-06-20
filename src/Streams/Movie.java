@@ -13,10 +13,17 @@ public class Movie implements Comparable<Movie>{
 
     private String title;
     private int likes;
+    private Genre genre;
 
-    public Movie(String title, int likes) {
+    public Movie(String title, int likes, Genre genre) {
         this.title = title;
         this.likes = likes;
+        this.genre = genre;
+    }
+
+    @Override
+    public int compareTo(Movie o) {
+        return this.getTitle().compareTo(o.getTitle());
     }
 
     public int getLikes() {
@@ -27,10 +34,9 @@ public class Movie implements Comparable<Movie>{
         return title;
     }
 
-    @Override
-    public int compareTo(Movie o) {
-        return this.getTitle().compareTo(o.getTitle());
+    public Genre getGenre() {
+        return genre;
     }
 
-
+    
 }

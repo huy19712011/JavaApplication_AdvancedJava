@@ -45,6 +45,9 @@ public class ThreadBasicsRunner {
 
     /**
      * @param args the command line arguments
+     * MIN_PRIORITY = 1
+     * NORM_PRIORITY = 5
+     * MAX_PRIORITY = 10
      */
     public static void main(String[] args) {
         System.out.println("Multi Threading");
@@ -52,6 +55,8 @@ public class ThreadBasicsRunner {
         // Task 1
         System.out.println("Task 1 kicked off");
         Task1 task1 = new Task1();
+//        task1.setPriority(10);
+        task1.setPriority(1);
         //task1.run();
         task1.start();
 
@@ -59,6 +64,7 @@ public class ThreadBasicsRunner {
         System.out.println("Task 2 kicked off");
         Task2 task2 = new Task2();
         Thread task2Thread = new Thread(task2);
+        task2Thread.setPriority(10);
         task2Thread.start();
 
         // Task 3

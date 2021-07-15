@@ -48,8 +48,9 @@ public class ThreadBasicsRunner {
      * MIN_PRIORITY = 1
      * NORM_PRIORITY = 5
      * MAX_PRIORITY = 10
+     * @throws java.lang.InterruptedException
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println("Multi Threading");
 
         // Task 1
@@ -68,6 +69,11 @@ public class ThreadBasicsRunner {
         task2Thread.start();
 
         // Task 3
+        // wait for task1 completed
+
+        task1.join(); // task 3 kick-off only after task1 done
+        task2Thread.join();
+
         System.out.println("Task 3 kicked off");
         for (int i = 301; i <= 399; ++i) {
             System.out.print(i + " ");

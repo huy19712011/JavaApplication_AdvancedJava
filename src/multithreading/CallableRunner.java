@@ -55,6 +55,9 @@ public class CallableRunner {
         System.out.println(welcomeMessage);
 
         System.out.println("\nMain completed");
+
+        // shut down
+        executorService.shutdown();
     }
 
 }

@@ -12,6 +12,31 @@ import java.util.concurrent.Executors;
  *
  * @author huynq
  */
+
+class Task extends Thread {
+
+    private int number;
+
+    public Task(int number) {
+        this.number = number;
+    }
+
+
+    @Override
+    public void run() {
+
+        System.out.println("Task " + number + " started...");
+
+        // Task 1
+        for (int i = number * 100; i <= number * 100 + 99; ++i) {
+            System.out.print(i + " ");
+        }
+        System.out.print("\nTask " + number +  " Done!");
+
+    }
+}
+
+
 public class ExecutorServiceRunner {
 
     /**
@@ -19,20 +44,17 @@ public class ExecutorServiceRunner {
      */
     public static void main(String[] args) {
 
-        // only one thread
+        // multiple threads
         ExecutorService executorService
-                = Executors.newSingleThreadExecutor();
-        executorService.execute(new Task1());
-        executorService.execute(new Thread(new Task2()));
+                = Executors.newFixedThreadPool(2);
+        executorService.execute(new Task(1));
+        executorService.execute(new Task(2));
+        executorService.execute(new Task(3));
+        executorService.execute(new Task(4));
+        executorService.execute(new Task(5));
+        executorService.execute(new Task(6));
+        executorService.execute(new Task(7));
 
-        // copy task3
-        System.out.println("Task 3 kicked off");
-        for (int i = 301; i <= 399; ++i) {
-            System.out.print(i + " ");
-        }
-        System.out.print("\nTask 3 Done");
-
-        System.out.print("\nMain Done");
 
         //shutdown
         executorService.shutdown();

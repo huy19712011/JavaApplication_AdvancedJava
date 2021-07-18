@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JDBC.insert;
+package JDBC.update;
 
 import JDBC.DatabaseConnectionManager;
 import java.sql.Connection;
@@ -15,7 +15,7 @@ import java.sql.Statement;
  *
  * @author huynq
  */
-public class JdbcInsertDemo {
+public class JdbcUpdateDemo {
 
     /**
      * @param args the command line arguments
@@ -39,8 +39,9 @@ public class JdbcInsertDemo {
 
             // execute sql query: insert row
             String sql = """
-                         insert into employees (first_name, last_name, email, department, salary)
-                         values ('John', 'Doe', 'jdoe@gmail.com', 'HR', 36000.00);
+                         update employees
+                         set email = 'JohnDoeUpdated@gmail.com'
+                         where first_name = 'John' and last_name = 'Doe';
                          """;
             int rowsAffected = myStmt.executeUpdate(sql);
 

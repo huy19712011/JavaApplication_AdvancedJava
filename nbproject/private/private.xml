@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Projects/Java/javaCore/JavaApplication_AdvancedJava/src/JDBC/jdbc_test/JdbcTest.java</file>
+            <file>file:/D:/Projects/Java/javaCore/JavaApplication_AdvancedJava/src/JDBC/blob_and_clob/BlobReadDemo.java</file>
+            <file>file:/D:/Projects/Java/javaCore/JavaApplication_AdvancedJava/src/JDBC/connection_pool/DatabaseConnectionPoolManager.java</file>
+            <file>file:/D:/Projects/Java/javaCore/JavaApplication_AdvancedJava/src/JDBC/prepared_statement/JdbcPreparedStatementDemo.java</file>
+            <file>file:/D:/Projects/Java/javaCore/JavaApplication_AdvancedJava/src/JDBC/blob_and_clob/BlobWriteDemo.java</file>
+            <file>file:/D:/Projects/Java/javaCore/JavaApplication_AdvancedJava/src/JDBC/connection_pool/ConnectionPoolWithConfigFile.java</file>
+            <file>file:/D:/Projects/Java/javaCore/JavaApplication_AdvancedJava/src/JDBC/connection_pool/ConnectionPoolDemo.java</file>
         </group>
     </open-files>
 </project-private>

@@ -29,8 +29,8 @@ public class GettingClassObjects {
         Class<?> obj4 = String.class;
 
         // 3. obj.getClass()
-        MyClass obj5 = new MyClass();
-        Class<? extends MyClass> newClass = obj5.getClass();
+        MyClassV2 obj5 = new MyClassV2();
+        Class<? extends MyClassV2> newClass = obj5.getClass();
         System.out.println(obj5);
         System.out.println(newClass);
 
@@ -50,9 +50,9 @@ public class GettingClassObjects {
 
 }
 
-class MyClass {
+class MyClassV2 {
 
-    public MyClass() {
+    public MyClassV2() {
         System.out.println("MyClass object created!");
     }
 

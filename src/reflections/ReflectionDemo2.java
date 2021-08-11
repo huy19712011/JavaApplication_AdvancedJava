@@ -7,30 +7,30 @@ package reflections;
 
 import java.lang.reflect.Constructor;
 
-class MyClass {
+class MyClassV2 {
 
-    public MyClass() {
+    public MyClassV2() {
         System.out.println("MyClass object created !!!");
     }
 
-    public MyClass(String str) {
+    public MyClassV2(String str) {
         System.out.println("Constructor with string parameter");
     }
 
-    public MyClass(Integer[] intergers) {
+    public MyClassV2(Integer[] intergers) {
         System.out.println("Constructor with integer array");
     }
 }
 
-//class MyClass {
+//class MyClassV2 {
 //
-//    public MyClass() {
+//    public MyClassV2() {
 //    }
 //
-//    public MyClass(int x) {
+//    public MyClassV2(int x) {
 //    }
 //
-//    public MyClass(String s, Integer[] integers) {
+//    public MyClassV2(String s, Integer[] integers) {
 //    }
 //}
 /**
@@ -43,9 +43,13 @@ public class ReflectionDemo2 {
 
     public static void main(String[] args) throws Exception {
 
-        //
-        Class<?> objClass = Class.forName("reflections.MyClass");
-        System.out.println(objClass);
+        // create obj - Class (2 ways)
+        //w1
+        Class<?> obj = Class.forName("reflections.MyClassV2");
+        System.out.println(obj);
+
+        //w2
+        Class<MyClassV2> objClass = MyClassV2.class;
 
         //
         System.out.println(objClass.getConstructor());
@@ -54,16 +58,16 @@ public class ReflectionDemo2 {
 
 
         //
-        Class<MyClass> c = MyClass.class;
+        Class<MyClassV2> c = MyClassV2.class;
         System.out.println(c);
 
-        Constructor<MyClass> constructor = c.getConstructor();
+        Constructor<MyClassV2> constructor = c.getConstructor();
         System.out.println("Constructor without arguments: " + constructor);
 
-        Constructor<MyClass> constructor1 = c.getConstructor(String.class);
+        Constructor<MyClassV2> constructor1 = c.getConstructor(String.class);
         System.out.println("Constructor with string parameter: " + constructor1);
 
-        Constructor<MyClass> constructor2 = c.getConstructor(Integer[].class);
+        Constructor<MyClassV2> constructor2 = c.getConstructor(Integer[].class);
         System.out.println("Constructor with interger array: " + constructor2);
 
     }

@@ -7,26 +7,26 @@ package reflections;
 
 import java.lang.reflect.Constructor;
 
-//class MyClassV2 {
+//class MyClassVersion2 {
 //
-//    public MyClassV2() {
-//        System.out.println("MyClassV2 object created !!!");
+//    public MyClassVersion2() {
+//        System.out.println("MyClassVersion2 object created !!!");
 //    }
 //
-//    public MyClassV2(String str) {
+//    public MyClassVersion2(String str) {
 //        System.out.println("Constructor with string parameter");
 //    }
 //}
 
-//class MyClassV2 {
+//class MyClassVersion2 {
 //
-//    public MyClassV2() {
+//    public MyClassVersion2() {
 //    }
 //
-//    public MyClassV2(int x) {
+//    public MyClassVersion2(int x) {
 //    }
 //
-//    public MyClassV2(String s, Integer[] integers) {
+//    public MyClassVersion2(String s, Integer[] integers) {
 //    }
 //}
 /**
@@ -39,19 +39,19 @@ public class ReflectionDemo {
 
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InstantiationException {
 
-        //MyClass objMyClass = new MyClassV2(); // error because private constructor
+        //MyClass objMyClass = new MyClassVersion2(); // error because private constructor
         //
-        Class<?> objClass = Class.forName("reflections.MyClassV2");
+        Class<?> objClass = Class.forName("reflections.MyClassVersion2");
         System.out.println(objClass);
 
         //
         Constructor<?> declaredConstructor = objClass.getDeclaredConstructor();
         declaredConstructor.setAccessible(true);
-        //MyClass name = (MyClassV2) declaredConstructor.newInstance();
-        MyClassV2 obj = (MyClassV2) declaredConstructor.newInstance();
+        //MyClass name = (MyClassVersion2) declaredConstructor.newInstance();
+        MyClassVersion2 obj = (MyClassVersion2) declaredConstructor.newInstance();
 
         //
-        Class<MyClass> c = MyClassV2.class;
+        Class<MyClass> c = MyClassVersion2.class;
         System.out.println(c);
 
         Constructor<MyClass> constructor = c.getConstructor();
@@ -67,9 +67,9 @@ public class ReflectionDemo {
 
 
 
-class MyClassV2 {
+class MyClassVersion2 {
 
-    private MyClassV2() {
+    private MyClassVersion2() {
         System.out.println("MyClass object created!");
     }
 
@@ -79,10 +79,10 @@ public class ReflectionDemo {
 
     public static void main(String[] args) throws Exception {
 
-        //MyClass obj = new MyClassV2(); // error because private constructor
+        //MyClass obj = new MyClassVersion2(); // error because private constructor
 
         // create object
-        Class<?> myClass = Class.forName("reflections.MyClass");
+        Class<?> myClass = Class.forName("reflections.MyClassVersion2");
 
         // get constructor
         Constructor<?> declaredConstructor = myClass.getDeclaredConstructor();
@@ -91,7 +91,7 @@ public class ReflectionDemo {
         declaredConstructor.setAccessible(true);
 
         // now get instance via constructor
-        MyClassV2 newInstance = (MyClassV2) declaredConstructor.newInstance();
+        MyClassVersion2 newInstance = (MyClassVersion2) declaredConstructor.newInstance();
         System.out.println(newInstance);
 
     }

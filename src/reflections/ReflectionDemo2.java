@@ -7,30 +7,30 @@ package reflections;
 
 import java.lang.reflect.Constructor;
 
-class MyClassV2 {
+class MyClassVersion2 {
 
-    public MyClassV2() {
+    public MyClassVersion2() {
         System.out.println("MyClass object created !!!");
     }
 
-    public MyClassV2(String str) {
+    public MyClassVersion2(String str) {
         System.out.println("Constructor with string parameter");
     }
 
-    public MyClassV2(Integer[] intergers) {
+    public MyClassVersion2(Integer[] intergers) {
         System.out.println("Constructor with integer array");
     }
 }
 
-//class MyClassV2 {
+//class MyClassVersion2 {
 //
-//    public MyClassV2() {
+//    public MyClassVersion2() {
 //    }
 //
-//    public MyClassV2(int x) {
+//    public MyClassVersion2(int x) {
 //    }
 //
-//    public MyClassV2(String s, Integer[] integers) {
+//    public MyClassVersion2(String s, Integer[] integers) {
 //    }
 //}
 /**
@@ -45,11 +45,11 @@ public class ReflectionDemo2 {
 
         // create obj - Class (2 ways)
         //w1
-        Class<?> obj = Class.forName("reflections.MyClassV2");
+        Class<?> obj = Class.forName("reflections.MyClassVersion2");
         System.out.println(obj);
 
         //w2
-        Class<MyClassV2> objClass = MyClassV2.class;
+        Class<MyClassVersion2> objClass = MyClassVersion2.class;
 
         //
         System.out.println(objClass.getConstructor());
@@ -58,16 +58,16 @@ public class ReflectionDemo2 {
 
 
         //
-        Class<MyClassV2> c = MyClassV2.class;
+        Class<MyClassVersion2> c = MyClassVersion2.class;
         System.out.println(c);
 
-        Constructor<MyClassV2> constructor = c.getConstructor();
+        Constructor<MyClassVersion2> constructor = c.getConstructor();
         System.out.println("Constructor without arguments: " + constructor);
 
-        Constructor<MyClassV2> constructor1 = c.getConstructor(String.class);
+        Constructor<MyClassVersion2> constructor1 = c.getConstructor(String.class);
         System.out.println("Constructor with string parameter: " + constructor1);
 
-        Constructor<MyClassV2> constructor2 = c.getConstructor(Integer[].class);
+        Constructor<MyClassVersion2> constructor2 = c.getConstructor(Integer[].class);
         System.out.println("Constructor with interger array: " + constructor2);
 
     }

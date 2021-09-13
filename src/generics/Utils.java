@@ -5,6 +5,9 @@
  */
 package generics;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author huynq
@@ -17,35 +20,28 @@ public class Utils {
 //    public static <T> T max(T first, T second) {
 //        return (first > second) ? first : second;
 //    }
-
     public static <T extends Comparable<T>> T max(T first, T second) {
         return (first.compareTo(second) < 0) ? second : first;
     }
 
-
 //    public static void print(int key, int value) {
 //        System.out.println(key + " = " + value);
 //    }
-
     public static <K, V, T> void print(K key, V value, T test) {
         System.out.println(key + " + " + value + " = " + test);
     }
-
 
     public static void printUser(User user) {
         System.out.println(user);
     }
 
-
 //    public static void printUsers(GenericList<User> users) {
 //        // do something
 //    }
-
 //    public static void printUsers(GenericList<?> users) {
 //        // do something
 //        Object x = users.get(0);
 //    }
-
     public static void printUsers(GenericList<? extends User> users) {
         // do something
         User x = users.get(0);
@@ -62,9 +58,15 @@ public class Utils {
 //        Object x = users.get(0);
 ////        User y = users.get(0); // error
 //    }
+    public static <T extends Number, K extends Number> double sum(T first, K second) {
+        return first.doubleValue() + second.doubleValue();
+    }
 
-
-
+    public static <T extends Number> double findSumUsingStream(List<T> array) {
+        return array.stream()
+                .mapToDouble(Number::doubleValue)
+                .sum();
+    }
 
 
 }

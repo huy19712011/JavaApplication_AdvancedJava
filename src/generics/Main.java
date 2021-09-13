@@ -5,6 +5,8 @@
  */
 package generics;
 
+import java.util.List;
+
 /**
  *
  * @author huynq
@@ -23,6 +25,11 @@ public class Main {
         for (var item: list) {
             System.out.println(item);
         }
+
+        System.out.println(Utils.sum(1, 2.5));
+
+        var array = List.of(1.5, 2.5, 6.0);
+        System.out.println(Utils.findSumUsingStream(array));
     }
 
 }
